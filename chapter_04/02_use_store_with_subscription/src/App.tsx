@@ -26,7 +26,7 @@ const createStore = <T extends unknown>(initialState: T): Store<T> => {
   return { getState, setState, subscribe };
 };
 
-const store = createStore({ count: 0 });
+const store = createStore({ count: 0, kot: "zalupa" });
 
 const useStore = <T extends unknown>(store: Store<T>) => {
   const [state, setState] = useState(store.getState());
@@ -50,7 +50,7 @@ const Component1 = () => {
   };
   return (
     <div>
-      {state.count} <button onClick={inc}>+1</button>
+      { state.kot } {state.count} <button onClick={inc}>+1</button>
     </div>
   );
 };
@@ -60,15 +60,17 @@ const Component2 = () => {
   const inc2 = () => {
     setState((prev) => ({
       ...prev,
-      count: prev.count + 2,
+      kot: `asdfadsf ${ prev.count }`,
     }));
   };
   return (
     <div>
-      {state.count} <button onClick={inc2}>+2</button>
+      { state.kot } {state.count} <button onClick={inc2}>+2</button>
     </div>
   );
 };
+
+
 
 const App = () => (
   <>
